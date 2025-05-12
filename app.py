@@ -7,6 +7,8 @@ from flask import Flask, render_template, redirect, url_for, session, request, f
 from datetime import timedelta
 from flask import make_response
 import socket
+import os
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
@@ -170,5 +172,9 @@ def check_logged_in():
         return jsonify(logged_in=False)
 
 
+#if __name__ == '__main__':
+ #   app.run(debug=True, port=5001)  # Use port 5001 to avoid port conflicts
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)  # Use port 5001 to avoid port conflicts
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
