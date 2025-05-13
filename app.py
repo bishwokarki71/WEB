@@ -107,7 +107,7 @@ def login():
         password = request.form['password']
 
         # Check if entered password matches the admin password
-        if username == "babina" and password == get_admin_password():
+        if username == "hi" and password == get_admin_password():
             new_password = generate_new_password()
             update_password(new_password)  # Update the password in the file
             send_password_to_admin(new_password)  # Send the new password to the admin's email
